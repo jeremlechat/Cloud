@@ -20,6 +20,6 @@
     "baseUrl": "./",
     "incremental": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/server.spec.ts", "tests/server.test.js"],
   "exclude": ["node_modules", "dist"]
 }
