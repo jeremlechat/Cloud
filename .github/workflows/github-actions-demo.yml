@@ -4,10 +4,16 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'Cloud/**'
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Cloud
 
     steps:
       # Étape 1 : Récupérer le code source
