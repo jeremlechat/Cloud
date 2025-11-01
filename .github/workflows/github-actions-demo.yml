@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'Cloud/**'
+    # paths:
+    #   - 'Cloud/**'
 
 jobs:
   build-and-test:
@@ -27,13 +27,16 @@ jobs:
           node-version: '18' # Remplace par ta version Node (ex: 16, 18, 20…)
 
       # Étape 3 : Installer les dépendances
-      - name: Mettre en cache les dépendances npm
+      - name: Cache npm
         uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('Cloud/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
+      - name: Installer les dépendances
+        run: npm ci
 
       # Étape 4 : Compiler le projet
       - name: Compiler l’application
